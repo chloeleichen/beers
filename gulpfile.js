@@ -3,7 +3,7 @@ var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     browserify = require('gulp-browserify'),
     concat = require('gulp-concat'),
-    clean = require('gulp-clean');
+    sass = require('gulp-sass');
 
 
 // JSHint task
@@ -28,12 +28,30 @@ gulp.task('browserify', function() {
   .pipe(gulp.dest('dist/js'));
 });
 
+// Styles task
+gulp.task('styles', function() {
+  gulp.src('app/styles/*.scss')
+  // The onerror handler prevents Gulp from crashing on mistake
+  .pipe(sass({onError: function(e) { console.log(e); } }))
+  // These last two should look familiar now :)
+  .pipe(gulp.dest('dist/css/'));
+});
+
+//Watch
 gulp.task('watch', ['lint'], function() {
   // Watch our scripts
   gulp.watch(['app/scripts/*.js', 'app/scripts/**/*.js'],[
     'lint',
     'browserify'
   ]);
+  gulp.watch(['app/styles/**/*.scss'], [
+    'styles'
+  ]);
 });
+
+//Default task
+gulp.task('default', ['watch']);
+
+
 
 
