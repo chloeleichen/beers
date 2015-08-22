@@ -10,16 +10,18 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
+    frameworks: ['jasmine', 'browserify'],
 
 
     // list of files / patterns to load in the browser
     files: [
-        './node_modules/angular/angular.min.js',
-        './node_modules/angular-route/angular-route.js',
+        // avoid: 'WARNING: Tried to load angular more than once.'
+        // './app/scripts/*/*.js',
+        // './app/scripts/*.js',
+        './dist/js/bundle.js',
         './node_modules/angular-mocks/angular-mocks.js',
-        './dist/js/*.js',
-        './test/*.js'
+        {pattern: './test/*.js',
+         inclused: false},
     ],
 
 
@@ -28,11 +30,14 @@ module.exports = function(config) {
     ],
 
 
-    // preprocess matching files before serving them to the browser
-    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
-    },
-
+    // browserify: {
+    //     watch: true,
+    //     debug: true
+    // },
+    // preprocessors: {
+    //     './app/scripts/*.js': ['browserify'],
+    //     './app/scripts/*/*.js': ['browserify']
+    // },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
@@ -60,7 +65,7 @@ module.exports = function(config) {
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     // browsers: ['Chrome', 'Firefox', 'Safari'],
-    //only in chrome for now
+    // only in chrome for now
     browsers: ['Chrome'],
 
 
