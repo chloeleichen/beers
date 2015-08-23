@@ -10,18 +10,15 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine', 'browserify'],
+    frameworks: ['jasmine'],
 
 
     // list of files / patterns to load in the browser
     files: [
         // avoid: 'WARNING: Tried to load angular more than once.'
-        // './app/scripts/*/*.js',
-        // './app/scripts/*.js',
-        './dist/js/bundle.js',
-        './node_modules/angular-mocks/angular-mocks.js',
-        {pattern: './test/*.js',
-         inclused: false},
+        {pattern: './dist/js/bundle.js'},
+        {pattern: './node_modules/angular-mocks/angular-mocks.js', watch: false},
+        {pattern: './test/*.js'}
     ],
 
 
