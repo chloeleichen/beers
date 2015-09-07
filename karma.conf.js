@@ -6,42 +6,26 @@ module.exports = function(config) {
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
-
-
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
 
-
     // list of files / patterns to load in the browser
     files: [
-        // avoid: 'WARNING: Tried to load angular more than once.'
-        {pattern: './dist/js/bundle.js'},
-        {pattern: './node_modules/angular-mocks/angular-mocks.js', watch: false},
-        {pattern: './test/*.js'}
+        './app/dist/bundle.js',
+        './node_modules/angular-mocks/angular-mocks.js',
+        './unit-tests/*.js'
     ],
-
 
     // list of files to exclude
     exclude: [
     ],
 
-
-    // browserify: {
-    //     watch: true,
-    //     debug: true
-    // },
-    // preprocessors: {
-    //     './app/scripts/*.js': ['browserify'],
-    //     './app/scripts/*/*.js': ['browserify']
-    // },
-
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: ['progress'],
-
-
+    
     // web server port
     port: 9876,
 
@@ -64,6 +48,12 @@ module.exports = function(config) {
     // browsers: ['Chrome', 'Firefox', 'Safari'],
     // only in chrome for now
     browsers: ['Chrome'],
+
+    plugins : [
+            'karma-chrome-launcher',
+            'karma-jasmine',
+            'karma-junit-reporter'
+            ],
 
 
     // Continuous Integration mode

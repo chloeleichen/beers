@@ -1,41 +1,36 @@
 {
-  "name": "beers",
+  "name": "aboilerplate",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Angular boilerplate",
+  "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/chloeleichen/beers.git"
+    "url": "https://github.com/chloeleichen/aboilerplate.git"
   },
-  "author": "@chloechenlei",
-  "license": "ISC",
+  "author": "Chloe Chen",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chloeleichen/beers/issues"
+    "url": "https://github.com/chloeleichen/aboilerplate/issues"
   },
-  "homepage": "https://github.com/chloeleichen/beers",
+  "homepage": "https://github.com/chloeleichen/aboilerplate",
   "devDependencies": {
-    "angular": "^1.4.4",
-    "angular-mocks": "^1.4.4",
-    "angular-route": "^1.4.4",
-    "browserify": "^11.0.1",
+    "angular": "^1.4.5",
+    "angular-mocks": "^1.4.5",
+    "angular-route": "^1.4.5",
     "gulp": "^3.9.0",
     "gulp-browserify": "^0.5.1",
-    "gulp-clean": "^0.3.1",
     "gulp-concat": "^2.6.0",
     "gulp-jshint": "^1.11.2",
     "gulp-sass": "^2.0.4",
-    "gulp-util": "^3.0.6",
+    "jasmine": "^2.3.2",
     "jasmine-core": "^2.3.4",
     "karma": "^0.13.9",
     "karma-chrome-launcher": "^0.2.0",
-    "karma-firefox-launcher": "^0.1.6",
     "karma-jasmine": "^0.3.6",
-    "karma-safari-launcher": "^0.1.1"
-  },
-  "dependencies": {
-    "angular-router-browserify": "0.0.2"
+    "karma-junit-reporter": "^0.3.4",
+    "protractor": "^2.2.0"
   }
 }

@@ -16,7 +16,7 @@ gulp.task('lint', function() {
 // Browserify task
 gulp.task('browserify', function() {
   // Single point of entry (make sure not to src ALL your files, browserify will figure it out for you)
-  gulp.src(['app/scripts/app.js'])
+  gulp.src(['app/scripts/main.js'])
   .pipe(browserify({
     insertGlobals: true,
     debug: true
@@ -28,7 +28,7 @@ gulp.task('browserify', function() {
   // Bundle to a single file
   .pipe(concat('bundle.js'))
   // Output it to our dist folder
-  .pipe(gulp.dest('app/dist'));
+  .pipe(gulp.dest('dist/js'));
 });
 
 // Styles task
@@ -36,17 +36,18 @@ gulp.task('styles', function() {
   gulp.src('app/styles/*.scss')
   // The onerror handler prevents Gulp from crashing on mistake
   .pipe(sass({onError: function(e) { console.log(e); } }))
-  .pipe(gulp.dest('app/dist/'));
+  // These last two should look familiar now :)
+  .pipe(gulp.dest('dist/css/'));
 });
 
 //Watch
 gulp.task('watch', ['lint'], function() {
   // Watch our scripts
-  gulp.watch(['app/scripts/*.js', 'app/**/*.js'],[
+  gulp.watch(['app/scripts/*.js', 'app/scripts/**/*.js'],[
     'lint',
     'browserify'
   ]);
-  gulp.watch(['app/styles/**/*.scss', 'app/scripts/*.scss'], [
+  gulp.watch(['app/styles/**/*.scss'], [
     'styles'
   ]);
 });
