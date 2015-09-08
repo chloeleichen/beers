@@ -2,7 +2,18 @@ var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     browserify = require('gulp-browserify'),
     concat = require('gulp-concat'),
-    sass = require('gulp-sass');
+    sass = require('gulp-sass'),
+    protractor = require("gulp-protractor").protractor;
+
+
+gulp.task('test', function(){
+  gulp.src(["./e2e-test/*.js"])
+  .pipe(protractor({
+        configFile: "e2e-tests/protractor.conf.js",
+        //args: ['--baseUrl', 'http://127.0.0.1:8000']
+    }))
+  .on('error', function(e) { throw e });
+});
 
 
 // JSHint task
