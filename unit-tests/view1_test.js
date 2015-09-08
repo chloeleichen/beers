@@ -1,14 +1,21 @@
 'use strict';
 
 describe('beer view1', function() {
-  beforeEach(module('beer'));
-
   var $controller;
+  var deferred;
+
+  beforeEach(module('beer'));
 
   beforeEach(inject(function(_$controller_){
     // The injector unwraps the underscores (_) from around the parameter names when matching
     $controller = _$controller_;
   }));
+
+  beforeEach(function () {
+    inject(function ($q) {
+      deferred = $q.defer();
+    });
+  });
 
   describe('$scope', function() {
     var $scope, controller;
@@ -25,10 +32,5 @@ describe('beer view1', function() {
     it('a list exists', function() {
       expect($scope.list).toBeDefined();
     });
-
-    it('first item should be 0', function() {
-      expect($scope.list[0]).toEqual(0);
-    });
-
   });
 });

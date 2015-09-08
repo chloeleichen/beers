@@ -2,7 +2,7 @@ var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     browserify = require('gulp-browserify'),
     concat = require('gulp-concat'),
-    sass = require('gulp-sass'),
+    sass = require('gulp-ruby-sass'),
     protractor = require("gulp-protractor").protractor;
 
 
@@ -44,10 +44,8 @@ gulp.task('browserify', function() {
 
 // Styles task
 gulp.task('styles', function() {
-  gulp.src('app/styles/*.scss')
-  // The onerror handler prevents Gulp from crashing on mistake
-  .pipe(sass({onError: function(e) { console.log(e); } }))
-  .pipe(gulp.dest('app/dist/'));
+  return sass('app/styles/app.scss', { style: 'expanded', loadPath: 'app/styles/' })
+    .pipe(gulp.dest('app/dist/'));
 });
 
 //Watch
@@ -57,7 +55,7 @@ gulp.task('watch', ['lint'], function() {
     'lint',
     'browserify'
   ]);
-  gulp.watch(['app/styles/**/*.scss', 'app/scripts/*.scss'], [
+  gulp.watch(['app/styles/**/*.scss', 'app/styles/*.scss'], [
     'styles'
   ]);
 });

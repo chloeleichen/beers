@@ -29,6 +29,6 @@
   ])
 
   //Load controller
-  .controller('View1Controller', ['$scope', view1ctrl])
+  .controller('View1Controller', ['$scope', '$http', view1ctrl])
   .controller('View2Controller', ['$scope', view2ctrl]);
 }());
