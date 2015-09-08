@@ -3,6 +3,7 @@
   $http.get('./../data.json')
   .then(function(response){
     $scope.list = response.data;
+    $scope.search;
     console.log($scope.list);
   }, function(error){
     console.log(error);

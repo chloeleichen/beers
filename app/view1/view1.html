@@ -1,4 +1,10 @@
 <div id ="view1">
+<form>
+  <label for="search">Search</label>
+  <input id="search" type="text" class="field" ng-model="search.keyword">
+  <button class="btn btn-primary">Go {{search.keyword}}</button>
+</form>
+
 <ul class="list-reset">
   <li ng-repeat ="n in list track by $index">
     {{n['Name']}}
