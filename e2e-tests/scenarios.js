@@ -9,8 +9,7 @@ describe('my app', function() {
     browser.get('index.html');
     expect(browser.getLocationAbsUrl()).toMatch("/view1");
   });
-
-
+  
   describe('display view1', function() {
     var view1 = element(by.css('view1')),
         view2 = element(by.css('view2')),
@@ -24,16 +23,26 @@ describe('my app', function() {
       expect(view1.isPresent).toBeTruthy();
     });
 
+    beforeEach(function(){
+      navView2.click();
+    });
+    it('should flip to view2', function(){
+      expect(view2.isPresent).toBeTruthy();
+    });
+
+    beforeEach(function(){
+      browser.get('index.html#/view2');
+    });
+    it('should go to view2', function(){
+      expect(view2.isPresent).toBeTruthy();
+    });
+
+    beforeEach(function(){
+      navView1.click();
+    });
+    it('should flip to view2', function(){
+      expect(view1.isPresent).toBeTruthy();
+    });
+
   });
-
-
-  // describe('display iew2', function() {
-  //   beforeEach(function() {
-  //     browser.get('index.html#/view2');
-  //   });
-  //   it('should render view2 when user navigates to /view2', function() {
-  //     expect(element.all(by.css('[ng-view] p')).first().getText()).
-  //       toMatch(/partial for view 2/);
-  //   });
-  // });
 });
