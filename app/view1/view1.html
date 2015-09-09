@@ -1,9 +1,14 @@
 <div id ="view1" class="container">
 <div class="sm-col sm-col-3">
 <form>
-  <label for="search">Search</label>
+  <label class="clearfix" for="search">Search: {{search.keyword}} </label>
   <input id="search" type="text" class="field" ng-model="search.keyword">
-  <button class="btn btn-primary">Go {{search.keyword}}</button>
+  <label>Select</label>
+    <ul class="block col-12">
+      <li ng-repeat ="style in beerStyles" class="style">
+        {{style}}
+      </li>
+    </ul>
 </form>
 </div>
 <div class="sm-col sm-col-9">
