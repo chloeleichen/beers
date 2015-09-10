@@ -1,21 +1,5 @@
 'use strict';
  module.exports = function($scope, $http) {
-  $scope.families = [
-    "Belgian Styles",
-    "Bocks",
-    "Brown Ales",
-    "Dark Lagers",
-    "Hybrid Beers",
-    "India Pale Ales",
-    "Pale Ales",
-    "Pale Lagers",
-    "Porters",
-    "Scottish-Style Ales",
-    "Specialty Beers",
-    "Stouts",
-    "Strong Ales",
-    "Wheat Beers"
-  ];
   $http.get('./../data.json')
   .then(function(response){
     $scope.pubs = response.data;

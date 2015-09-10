@@ -29,11 +29,5 @@ describe('beer view1', function() {
       expect(controller).toBeDefined();
     });
 
-    it('load 14 beer styles family', function(){
-      expect($scope.families).toBeDefined();
-      expect($scope.families[0]).toEqual("Belgian Styles");
-      expect($scope.families.length).toBe(14);
-    });
-
   });
 });

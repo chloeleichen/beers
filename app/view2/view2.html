@@ -1,3 +1,19 @@
-<div id ="view2">
-  <p> This is the partial for view 2. </p>
+<div id ="view2" class="container">
+<div class="sm-col sm-col-3">
+<form>
+  <label class="clearfix" for="search">Search: {{search.keyword}} </label>
+  <input id="filter" type="text" class="field" ng-model="search.keyword">
+  <label>Select</label>
+    <ul class="block col-12">
+      <li ng-repeat ="family in families" class="beer-family">
+        {{family}}
+      </li>
+    </ul>
+  
+</form>
+</div>
+<div class="sm-col sm-col-9">
+<ul class="list-reset">
+  <li> placeholder </li>
+</ul>
 </div>
