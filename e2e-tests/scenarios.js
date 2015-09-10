@@ -13,8 +13,8 @@ describe('my app', function() {
   describe('display view1', function() {
     var view1 = element(by.css('view1')),
         view2 = element(by.css('view2')),
-        navView1 = element(by.linkText('view1')),
-        navView2 = element(by.linkText('view2'));
+        navView1 = element(by.linkText('Breweries Lookup')),
+        navView2 = element(by.linkText('Beers Lookup'));
 
     beforeEach(function() {
       browser.get('index.html#/view1');
@@ -45,4 +45,31 @@ describe('my app', function() {
     });
 
   });
+
+  describe('load all results initially', function(){
+    var filteredResult = null ;
+
+    beforeEach(function(){
+      browser.get('index.html');
+      filteredResult = element.all(by.repeater('pub in pubs'));
+    });
+    it('should initially display all pubs', function(){
+      expect(filteredResult.count()).toBe(27);
+    });
+  });
+
+  describe('keyword filter to work', function(){
+    var filterInput = element(by.css('#filter'));
+    var filteredResult = null;
+    
+    beforeEach(function(){
+      browser.get('index.html');
+      filteredResult = element.all(by.repeater('pub in pubs'));
+      filterInput.sendKeys('any value');
+    });
+    it('should display 0 result', function(){
+      expect(filteredResult.count()).toBe(0);
+    });
+  })
+
 });
