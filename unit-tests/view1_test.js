@@ -28,9 +28,12 @@ describe('beer view1', function() {
     it('view1 controller defined', function(){
       expect(controller).toBeDefined();
     });
-    //list defined
-    it('a list exists', function() {
-      expect($scope.list).toBeDefined();
+
+    it('load 14 beer styles family', function(){
+      expect($scope.families).toBeDefined();
+      expect($scope.families[0]).toEqual("Belgian Styles");
+      expect($scope.families.length).toBe(14);
     });
+
   });
 });

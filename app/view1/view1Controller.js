@@ -1,6 +1,6 @@
 'use strict';
  module.exports = function($scope, $http) {
-  $scope.beerStyles = [
+  $scope.families = [
     "Belgian Styles",
     "Bocks",
     "Brown Ales",
