@@ -16,7 +16,17 @@
     $scope.pubs = response.data;
     $scope.search;
     $scope.getDistance = getDistance;
-    console.log($scope.pubs);
-
+    geocode(2000);
   }
+
+  function geocode(postcode){
+    var targetUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="+postcode+",+AU&key="+chloeBeerApp.apiKey;
+    $http.get(targetUrl)
+    .then(function(response){
+          console.log(response.data.results[0]);
+          console.log(response.data.results[0].geometry.location);
+        }, function(error){
+          console.log("error!");
+        });
+    }
 };
