@@ -1,14 +1,15 @@
-<div id ="view1" class="container">
+<div id ="view1" class="container clearfix">
 <div class="sm-col sm-col-3">
 <form>
   <label class="clearfix" for="search">Search: {{search.keyword}} </label>
   <input id="filter" type="text" class="field" ng-model="search.keyword">
-  <label>Select</label>
-<!--     <ul class="block col-12">
+<!--
+    <ul class="block col-12">
       <li ng-repeat ="family in families" class="beer-family">
         {{family}}
       </li>
-    </ul> -->
+    </ul> 
+-->
   
 </form>
 </div>
@@ -16,16 +17,32 @@
 <ul class="list-reset">
   <li class="clearfix mb2 border border-blue" ng-repeat ="pub in pubs | filter:search.keyword">
     <div class="left p2 mr1 border border-blue">
-    <img src="http://d2v52k3cl9vedd.cloudfront.net/assets/images/placeholder-square.svg" width="100" width="100"/>
+      <img src="http://d2v52k3cl9vedd.cloudfront.net/assets/images/placeholder-square.svg" width="100" width="100"/>
     </div>
     <div class="overflow-hidden">
-    <h3>{{pub.name}}</h3>
-    <ul ng-if="pub.beerSelection.length>0">
-      <li ng-repeat="beer in pub.beerSelection.split(',') track by $index">
-        {{beer}}
-      </li>
-    </ul>
+      <h3>{{pub.name}}</h3>
+      <div>
+        <span>{{pub['Town/Suburb']}}, VIC</span>
+        <a href="">{{distance}}</a>
+      </div>
+      <div ng-if="pub.beerSelection.length>0" >
+        <label>Beer collections</label>
+        <ul>
+          <li ng-repeat="beer in pub.beerSelection.split(',') track by $index">
+            {{beer}}
+          </li>
+        </ul>
+      </div>
     </div>
   </li>
 </ul>
+</div>
+</div>
+
+<div class="info-box center sm-col-4 border p2 bg-white">
+  <h4>Enter a postcode below to display the distance of all breweries from you.</h4>
+  <form>
+    <input id="search" type="text" placeholder="Postcode" class="field block mb1 mx-auto" ng-model="postcode">
+    <button class="btn btn-primary" ng-click="getDistance(postcode)">Save my location</button>
+  </form>
 </div>
