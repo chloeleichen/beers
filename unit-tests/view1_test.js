@@ -29,5 +29,9 @@ describe('beer view1', function() {
       expect(controller).toBeDefined();
     });
 
+    it('should geocode correctly', function(){
+      expect(controller.geocode).toBeDefined();
+    })
+
   });
 });

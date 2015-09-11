@@ -12,6 +12,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+        'api.js',
         './app/dist/bundle.js',
         './node_modules/angular-mocks/angular-mocks.js',
         './unit-tests/*.js'
