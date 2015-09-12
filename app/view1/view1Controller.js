@@ -2,16 +2,8 @@
  module.exports = function($scope, $http, $q, PubsModel) {
   $scope.distance = "distance from me";
 
-
-  var defer = $q.defer();
-  defer.promise.then(function(){
-    console.log('promose');
-    
-  });
-
   PubsModel.getPubs()
     .then(function(response){
-      console.log(response.data);
       init(response);
     }, function(error){
       console.log(error);
@@ -26,7 +18,7 @@
     $scope.pubs = response.data;
     $scope.search;
     $scope.getDistance = getDistance;
-    console.log(geocode(2000));
+    console.log(getGeo());
   }
 
   function geocode(postcode){
@@ -36,12 +28,11 @@
         .then(function(response){
               console.log(response.data.results[0]);
               result = response.data.results[0].geometry.location;
-              // defer.resolve();
             }, function(error){
               console.log("error!");
             });
     }
-
     //for testing 
     this.geocode = geocode;
+
 };

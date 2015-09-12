@@ -13,7 +13,8 @@
     pubs = extract(result);
     return pubs;
   }
+  
   this.getPubs = function(){
-    return $http.get(URL.FETCH).then(cachePubs);
+    return (pubs)? $q.when(pubs) ? $http.get(URL.FETCH).then(cachePubs);
   };
 };
