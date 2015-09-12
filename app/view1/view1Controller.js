@@ -1,12 +1,22 @@
 'use strict';
- module.exports = function($scope, $http) {
+ module.exports = function($scope, $http, $q, PubsModel) {
   $scope.distance = "distance from me";
-  $http.get('./../data.json')
-  .then(function(response){
-    init(response);
-  }, function(error){
-    console.log(error);
+
+
+  var defer = $q.defer();
+  defer.promise.then(function(){
+    console.log('promose');
+    
   });
+
+  PubsModel.getPubs()
+    .then(function(response){
+      console.log(response.data);
+      init(response);
+    }, function(error){
+      console.log(error);
+    });
+
 
   function getDistance(postcode){
     $scope.distance = postcode;
@@ -23,12 +33,13 @@
     var result;
     var targetUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="+postcode+",+AU&key="+chloeBeerApp.apiKey;
     $http.get(targetUrl)
-    .then(function(response){
-          console.log(response.data.results[0]);
-          result = response.data.results[0].geometry.location;
-        }, function(error){
-          console.log("error!");
-        });
+        .then(function(response){
+              console.log(response.data.results[0]);
+              result = response.data.results[0].geometry.location;
+              // defer.resolve();
+            }, function(error){
+              console.log("error!");
+            });
     }
 
     //for testing 

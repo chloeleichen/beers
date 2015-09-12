@@ -3,7 +3,9 @@
   require('angular');
   require('angular-route');
   var view1ctrl = require('./../view1/view1Controller'),
-      view2ctrl = require('./../view2/view2Controller');
+      view2ctrl = require('./../view2/view2Controller'),
+      pubsMdl = require('./services/pubsModel.js'); 
+
 
 
   angular.module('beer', ['ngRoute'])
@@ -29,6 +31,8 @@
   ])
 
   //Load controller
-  .controller('View1Controller', ['$scope', '$http', view1ctrl])
-  .controller('View2Controller', ['$scope', view2ctrl]);
+  .controller('View1Controller', ['$scope', '$http', '$q','PubsModel', view1ctrl])
+  .controller('View2Controller', ['$scope', view2ctrl])
+  //model
+  .service('PubsModel', ['$http',pubsMdl] );
 }());
