@@ -18,19 +18,23 @@
     $scope.pubs = response.data;
     $scope.search;
     $scope.getDistance = getDistance;
-    console.log(getGeo());
+    console.log(geocode(2000)[$$state]);
   }
 
   function geocode(postcode){
-    var result;
-    var targetUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="+postcode+",+AU&key="+chloeBeerApp.apiKey;
+    var result,
+        targetUrl = "https://maps.googleapis.com/maps/api/geocode/json?address="+postcode+",+AU&key="+chloeBeerApp.apiKey,
+        defer = $q.defer();
+
     $http.get(targetUrl)
         .then(function(response){
               console.log(response.data.results[0]);
               result = response.data.results[0].geometry.location;
+              defer.resolve(result);
             }, function(error){
               console.log("error!");
             });
+      return defer.promise;
     }
     //for testing 
     this.geocode = geocode;

@@ -34,5 +34,5 @@
   .controller('View1Controller', ['$scope', '$http', '$q','PubsModel', view1ctrl])
   .controller('View2Controller', ['$scope', view2ctrl])
   //model
-  .service('PubsModel', ['$http',pubsMdl] );
+  .service('PubsModel', ['$http',pubsMdl]);
 }());
