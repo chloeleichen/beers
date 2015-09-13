@@ -1,14 +1,17 @@
 'use strict';
 describe('pubsModel service', function() {
-  var $httpBackend;
+  var $httpBackend,
+      PubsModel;
 
   beforeEach(module('beer'));
 
-  beforeEach(inject(function ($injector) {
-    $httpBackend = $injector.get("$httpBackend");
+  beforeEach(inject(function(_PubsModel_, _$httpBackend_){
+    PubsModel = _PubsModel_;
+    $httpBackend = _$httpBackend_;
     $httpBackend.when("GET", "./../data.json")
         .respond(200, {name:"goodValue"});
-  }));
+  }))
+
 
   afterEach(function () {
     $httpBackend.flush()
@@ -17,14 +20,13 @@ describe('pubsModel service', function() {
   });
 
   describe('pubsModel successful http request', function () {
-    it('.value should be "goodValue"', inject(function (pubsModel) {
-
-        pubsModel.getPubs().success(function(response) {
+    it('.value should be "goodValue"', function () {
+      PubsModel.getPubs()
+        .then(function(response){
           expect(response.name).toEqual("goodValue");
-        }).error( function(response) {
-          //should not error with $httpBackend interceptor 200 status
-          expect(false).toEqual(true);
+        }, function(error){
+          console.log(error);
         });
-    }));
+    });
   });
 });
