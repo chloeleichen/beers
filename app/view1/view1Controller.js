@@ -15,10 +15,10 @@
   }
 
   function init(response){
-    $scope.pubs = response.data;
+    $scope.pubs = response;
     $scope.search;
     $scope.getDistance = getDistance;
-    console.log(geocode(2000)[$$state]);
+    console.log(geocode(2000));
   }
 
   function geocode(postcode){
