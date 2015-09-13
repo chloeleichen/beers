@@ -1,17 +1,13 @@
 'use strict';
 
 describe('beer view1', function() {
-  var $controller,
-      $httpBackEnd = null,
-      pubsModel = null;
+  var $controller;
 
   beforeEach(module('beer'));
 
-  beforeEach(inject(function(_$httpBackend_, _$controller_, _pubsModel_){
+  beforeEach(inject(function(_$controller_){
     // The injector unwraps the underscores (_) from around the parameter names when matching
     $controller = _$controller_;
-    $httpBackEnd = _$httpBackend_;
-    pubsModel = _pubsModel_;
   }));
 
 
@@ -27,10 +23,10 @@ describe('beer view1', function() {
       expect(controller).toBeDefined();
     });
 
-    it('should geocode correctly', function(){
-      expect(controller.geocode).toBeDefined();
-    });
+    // it('should geocode correctly', function(){
+    //   expect(controller.geocode).toBeDefined();
+    // });
 
     });
   });
-});
+
